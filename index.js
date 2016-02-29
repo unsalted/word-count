@@ -10,6 +10,7 @@ var pattern = /[a-zA-Z0-9_\u0392-\u03c9\u00c0-\u00ff\u0600-\u06ff]+|[\u4e00-\u9f
 
 module.exports = function (data) {
   var m = data.match(pattern);
+  m = (m == null ? 0 : m);  // if no pattern match for odd non-word strings;
   var count = 0;
   for (var i = 0; i < m.length; i++) {
     if (m[i].charCodeAt(0) >= 0x4e00) {
